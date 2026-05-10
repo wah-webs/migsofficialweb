@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MIGS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+    transition:.3s;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,191,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,191,255,.05) 1px, transparent 1px);
+    background-size:64px 64px;
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left, rgba(0,191,255,.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255,60,60,.08), transparent 40%);
+    z-index:-1;
+}
+
+/* LIGHT MODE */
+
+body.light-mode{
+    background:#f5f5f5;
+    color:#111;
+}
+
+body.light-mode nav{
+    background:rgba(255,255,255,.9);
+    border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+body.light-mode .weapon-card,
+body.light-mode .stat-card,
+body.light-mode .setting-card,
+body.light-mode .step-card,
+body.light-mode .perk-box,
+body.light-mode .fov-card,
+body.light-mode .search{
+    background:white;
+    color:#111;
+    border:1px solid rgba(0,0,0,.08);
+}
+
+body.light-mode .cat-btn{
+    background:white;
+    color:#111;
+}
+
+body.light-mode p{
+    color:#555;
+}
+
+body.light-mode .code-box{
+    background:#f1f1f1;
+    color:#00bfff;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    height:85px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.logo-box{
+    width:54px;
+    height:54px;
+    border-radius:14px;
+    background:#00bfff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    box-shadow:0 0 25px rgba(0,191,255,.5);
+}
+
+.logo h1{
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.nav-controls{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.social-links{
+    display:flex;
+    gap:10px;
+}
+
+.control-btn,
+.social-btn{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#0d0d0d;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+    font-size:20px;
+    text-decoration:none;
+}
+
+.control-btn:hover,
+.social-btn:hover{
+    border-color:#00bfff;
+    transform:translateY(-4px);
+    box-shadow:0 0 18px rgba(0,191,255,.35);
+}
+
+.control-btn.active{
+    background:#00bfff;
+    color:black;
+    font-weight:700;
+}
+
+.discord:hover{
+    background:#5865F2;
+}
+
+.instagram:hover{
+    background:#E1306C;
+}
+
+.tiktok:hover{
+    background:#111;
+    border-color:#00f2ea;
+}
+
+.gift:hover{
+    background:#00bfff;
+    color:black;
+}
+
+/* HERO */
+
+.hero{
+    padding:100px 20px 40px;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:90px;
+    color:#00bfff;
+    font-weight:800;
+    letter-spacing:6px;
+}
+
+.hero p{
+    margin-top:14px;
+    color:#888;
+    font-size:22px;
+    letter-spacing:4px;
+}
+
+/* STATS */
+
+.stats{
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.stat-card{
+    width:170px;
+    height:170px;
+    border-radius:24px;
+    background:#0c0f13;
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    border-color:#00bfff;
+    box-shadow:0 0 30px rgba(0,191,255,.25);
+}
+
+.stat-card h3{
+    font-size:52px;
+    color:#00bfff;
+    margin-top:10px;
+}
+
+.stat-card p{
+    color:#777;
+    margin-top:8px;
+    letter-spacing:2px;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:100px;
+    text-align:center;
+    padding:0 20px 80px;
+}
+
+.section-title{
+    font-size:54px;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-bottom:50px;
+}
+
+/* SEARCH */
+
+.search{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    background:#090b0e;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:22px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.search input{
+    width:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:20px;
+}
+
+.search input::placeholder{
+    color:#666;
+}
+
+/* CATEGORY BUTTONS */
+
+.categories{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+.cat-btn{
+    padding:18px 34px;
+    border-radius:16px;
+    background:#101215;
+    border:1px solid rgba(255,255,255,.08);
+    color:#aaa;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cat-btn.active,
+.cat-btn:hover{
+    background:#00bfff;
+    color:white;
+    box-shadow:0 0 25px rgba(0,191,255,.35);
+}
+
+/* CARDS */
+
+.cards{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+    max-width:1400px;
+    margin-inline:auto;
+}
+
+.weapon-content{
+    padding:18px;
+}
+
+.weapon-card{
+    background:#090b10;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+    text-align:left;
+    padding:0;
+}
+
+.weapon-card:hover{
+    transform:translateY(-6px);
+    border-color:#00bfff;
+    box-shadow:0 0 25px rgba(0,191,255,.18);
+}
+
+.weapon-card h3{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:10px;
+    line-height:1.2;
+}
+
+
+.weapon-card:hover .weapon-img{
+    transform:scale(1.05);
+}
+
+.weapon-img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    display:block;
+}
+
+.modal-img{
+    width:100%;
+    height:220px;
+    object-fit:fill;
+    margin-bottom:20px;
+}
+
+.weapon-card p{
+    color:#888;
+    line-height:1.5;
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.weapon-tag{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:10px;
+    background:#00bfff;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* RED SECTION */
+
+.red-section{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 20px 100px;
+}
+
+.red-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:40px;
+    color:#00bfff;
+}
+
+/* PERKS */
+
+.perk-box{
+    background:linear-gradient(180deg,#1a0000,#0d0617);
+    border:1px solid rgba(0,191,255,.25);
+    border-radius:24px;
+    padding:30px;
+    max-width:700px;
+    margin:0 auto 80px;
+    box-shadow:0 0 35px rgba(0,191,255,.15);
+}
+
+.perk-box h3{
+    margin-bottom:25px;
+    color:#ff6b6b;
+}
+
+.perk-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.perk{
+    background:#07121f;
+    border:1px solid rgba(255,255,255,.06);
+    padding:16px;
+    border-radius:14px;
+    color:#ddd;
+    font-weight:600;
+}
+
+/* SETTINGS */
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.setting-card{
+    background:linear-gradient(180deg,#1a0000,#0d0617);
+    border-radius:24px;
+    border:1px solid rgba(0,191,255,.2);
+    padding:30px;
+    text-align:center;
+}
+
+.setting-card h4{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+.setting-card p{
+    color:#999;
+    margin-bottom:24px;
+}
+
+.code-box{
+    border:2px dashed rgba(255,255,255,.15);
+    border-radius:18px;
+    padding:25px;
+    background:#07121f;
+    color:#ff8c8c;
+    font-weight:700;
+    word-break:break-all;
+    margin-bottom:22px;
+}
+
+/* COPY BUTTON */
+
+.copy-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#00bfff,#ff0000);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+    letter-spacing:1px;
+    box-shadow:
+    0 0 20px rgba(0,191,255,.25),
+    inset 0 0 12px rgba(255,255,255,.06);
+}
+
+.copy-btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    background:linear-gradient(135deg,#ff5555,#ff1a1a);
+    box-shadow:
+    0 0 35px rgba(0,191,255,.45),
+    inset 0 0 14px rgba(255,255,255,.08);
+}
+
+.copy-btn:active{
+    transform:scale(.98);
+}
+
+/* FOV */
+
+.fov-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.fov-card{
+    background:#07121f;
+    border:1px solid rgba(0,191,255,.18);
+    border-radius:24px;
+    padding:40px 20px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.fov-card.active{
+    border-color:#00bfff;
+    box-shadow:0 0 30px rgba(0,191,255,.25);
+    transform:translateY(-6px);
+}
+
+.fov-card h2{
+    font-size:58px;
+    color:#4dcfff;
+}
+
+.fov-card p{
+    color:#aaa;
+    margin-top:10px;
+}
+
+/* HOW TO */
+
+.fancy-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-top:90px;
+    margin-bottom:50px;
+}
+
+.fancy-title span{
+    width:120px;
+    height:1px;
+    background:rgba(255,255,255,.15);
+}
+
+.fancy-title h2{
+    font-size:42px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+}
+
+.step-card{
+    background:#07121f;
+    border-radius:22px;
+    border:1px solid rgba(0,191,255,.15);
+    padding:30px;
+    text-align:center;
+}
+
+.step-number{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:#00bfff;
+    margin:0 auto 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+}
+
+.step-card h4{
+    margin-bottom:12px;
+}
+
+.step-card p{
+    color:#888;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+.footer-line{
+    width:100%;
+    height:1px;
+    background:rgba(255,255,255,.12);
+    margin-top:80px;
+}
+
+.mini-panel{
+    width:100%;
+    text-align:center;
+    padding:70px 20px 25px;
+}
+
+.mini-logo{
+    font-size:32px;
+    font-weight:800;
+    color:#00d9ff;
+    margin-bottom:10px;
+    letter-spacing:2px;
+}
+
+.mini-sub{
+    color:#999;
+    margin-bottom:10px;
+}
+
+.mini-copy{
+    color:#555;
+}
+
+.mini-bar{
+    width:100%;
+    height:24px;
+    background:#001a2e;
+    border-top:1px solid rgba(0,191,255,.15);
+    border-bottom:1px solid rgba(0,191,255,.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#00bfff;
+    font-size:10px;
+    font-weight:700;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    padding:20px;
+}
+
+.modal-box{
+    width:100%;
+    max-width:500px;
+    background:linear-gradient(180deg,#1a0000,#0d0617);
+    border:1px solid rgba(0,191,255,.3);
+    border-radius:24px;
+    padding:35px;
+    position:relative;
+    box-shadow:0 0 40px rgba(0,191,255,.25);
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.close-btn{
+    position:absolute;
+    right:18px;
+    top:14px;
+    cursor:pointer;
+    font-size:22px;
+    color:#ff7b7b;
+}
+
+.modal-box h2{
+    margin-bottom:14px;
+    font-size:32px;
+}
+
+.modal-box p{
+    color:#aaa;
+    margin-bottom:24px;
+}
+
+/* QR MODAL */
+
+.qr-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.qr-content{
+    width:100%;
+    max-width:400px;
+    background:#0c0f13;
+    border:1px solid rgba(0,191,255,.25);
+    border-radius:28px;
+    padding:30px;
+    position:relative;
+    text-align:center;
+    box-shadow:0 0 40px rgba(0,191,255,.2);
+    animation:popup .25s ease;
+}
+
+.qr-close{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#111;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.qr-title{
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:12px;
+    color:#00bfff;
+}
+
+.qr-text{
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+.qr-text.small{
+    font-size:13px;
+    margin-top:18px;
+}
+
+.qr-image{
+    width:70%;
+    border-radius:22px;
+    border:2px solid rgba(255,255,255,.08);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        padding:0 20px;
+    }
+
+    .hero h2{
+        font-size:56px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .logo h1{
+        font-size:22px;
+    }
+
+    .icon-btn{
+        width:42px;
+        height:42px;
+    }
+
+    .perk-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+
+    <div class="logo">
+        <div class="logo-box">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+        <h1>MIGS</h1>
+    </div>
+
+    <div class="nav-controls">
+
+    <button class="control-btn" id="themeToggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+</button>
+
+    <div class="social-links">
+
+        <a href="https://discord.com/invite/MejvAgNr2" class="social-btn discord" target="_blank">
+            <i class="fab fa-discord"></i>
+        </a>
+
+        <a href="https://instagram.com" class="social-btn instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@migsofficial_?is_from_webapp=1&sender_device=pc" class="social-btn tiktok" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@mglfrnl?is_from_webapp=1&sender_device=pc" class="social-btn tiktok" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+
+        <button class="social-btn gift" onclick="openQR()">
+            <i class="fas fa-gift"></i>
+        </button>
+
+    </div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+    <h2>MIGS</h2>
+
+    <p>
+        LOADOUTS & SETTINGS
+    </p>
+
+    <div class="stats">
+
+    <div class="stat-card">
+
+        <div style="font-size:30px; color:#00bfff;">
+            <i class="fas fa-crosshairs"></i>
+        </div>
+
+        <h3>31</h3>
+
+        <p>LOADOUTS</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div style="font-size:30px; color:#00bfff;">
+            <i class="fas fa-star"></i>
+        </div>
+
+        <h3>0</h3>
+
+        <p>FAVORITES</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div style="font-size:30px; color:#00bfff;">
+            <i class="fas fa-cog"></i>
+        </div>
+
+        <h3>2</h3>
+
+        <p>SETTINGS</p>
+
+    </div>
+
+</div>
+
+<section class="section">
+
+    <div class="section-title">
+        🛡 LOADOUTS
+    </div>
+
+    <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search weapons...">
+    </div>
+
+    <div class="categories">
+
+    <button class="cat-btn active" onclick="filterCards('all', this)">
+        ALL
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('AR', this)">
+        AR
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('SMG', this)">
+        SMG
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('SG', this)">
+        SG
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('LMG', this)">
+        LMG
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('MARKSMAN', this)">
+        MARKSMAN
+    </button>
+
+    <button class="cat-btn" onclick="filterCards('SNIPER', this)">
+        SNIPER
+    </button>
+    
+
+</div>
+
+    <div class="cards">
+
+ <!-- KRM -->
+<div class="weapon-card" data-category="SG" onclick="openModal(
+    'KRM-262',
+    'Max damage shotgun build for instant close-range kills. Best used in aggressive rush playstyle.',
+    'KRM-262-1C2A5E6A9C',
+    'https://i.imgur.com/ZAqWixj.png'
+)">
+
+    <img src="images/krm.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>KRM-262</h3>
+
+        <p>
+            Max damage shotgun build for instant close-range kills.
+        </p>
+
+        <div class="weapon-tag">SG CLASS</div>
+
+    </div>
+
+</div>
+
+    <!-- HS0405 -->
+<div class="weapon-card" data-category="SG" onclick="openModal(
+    'HS0405',
+    'One-shot shotgun build for close combat dominance.',
+    'SG123456',
+    'https://i.imgur.com/4EY9F8m.png'
+)">
+
+    <img src="https://i.imgur.com/ah0egsv.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>HS0405</h3>
+
+        <p>
+            One-shot shotgun build for close combat dominance.
+        </p>
+
+        <div class="weapon-tag">SG CLASS</div>
+
+    </div>
+
+</div>
+    
+      <!-- BY15 -->
+<div class="weapon-card" data-category="SG" onclick="openModal(
+    'BY15',
+    'High-mobility shotgun build with powerful one-shot potential and fast ADS speed. Perfect for aggressive close-range pushes and quick movement gameplay.',
+    'BY15-1C2A5E6A9C',
+    'https://i.imgur.com/4EY9F8m.png'
+)">
+
+    <img src="https://i.imgur.com/ah0egsv.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>BY15</h3>
+
+        <p>
+            One-shot shotgun build for close combat dominance.
+        </p>
+
+        <div class="weapon-tag">SG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- ARGUS -->
+<div class="weapon-card" data-category="SG" onclick="openModal(
+    'ARGUS',
+    'Precision slug shotgun with impressive range, tight spread accuracy, and deadly one-shot potential. Perfect for aggressive players who rely on fast aim and precise shots.',
+    'Argus-1B2C5E6C9B',
+    'https://i.imgur.com/hgZKHiD.png'
+)">
+
+    <img src="https://i.imgur.com/ah0egsv.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>ARGUS</h3>
+
+        <p>
+            Long-range shotgun setup with accurate slug shots and powerful one-shot eliminations.
+        </p>
+
+        <div class="weapon-tag">SG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- AK117 -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'AK117',
+    'High accuracy aggressive setup with fast ADS speed and low recoil.',
+    'AK117-1C2C6C8B9A',
+    'https://i.imgur.com/raYHCru.png'
+)">
+
+    <img src="https://i.imgur.com/ri7Z6h9.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>AK117</h3>
+
+        <p>
+            High accuracy aggressive setup with fast ADS speed and low recoil.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- BP50 -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'BP50',
+    'The BP50 is a high-speed assault rifle built for aggressive mid-range combat with exceptional accuracy and control.',
+    'BP50-1D2A4C5B8B',
+    'images/bp50attachment.PNG'
+)">
+
+    <img src="images/bp50.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>BP50</h3>
+
+        <p>
+            The BP50 delivers rapid fire rate, smooth recoil control,
+            and excellent mobility, making it perfect for aggressive
+            players who dominate close to mid-range fights.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- FFAR -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'FFAR 1',
+    'The FFAR 1 is a high-speed assault rifle built for aggressive players who thrive in fast-paced combat. Combining exceptional fire rate, strong close-to-medium range performance, and responsive handling, the FFAR 1 delivers relentless pressure and rapid eliminations in every engagement.',
+    'FFAR 1-1B2E4D8E9E',
+    'images/ffarattachment.PNG'
+)">
+
+    <img src="images/ffar.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>FFAR 1</h3>
+
+        <p>
+            The FFAR 1 offers incredible fire rate, smooth mobility,
+            and reliable recoil control, making it perfect for aggressive
+            pushes, close-range duels, and fast-paced ranked matches.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- KN-44 -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'KN-44',
+    'The KN-44 is a dependable assault rifle known for its balanced performance, consistent accuracy, and strong mid-range firepower. Designed for versatility in any combat situation, the KN-44 delivers reliable damage output and smooth handling, making it a favorite for both aggressive and tactical players.',
+    'KN-44-1A2B4A8B9A',
+    'images/kn44attachment.PNG'
+)">
+
+    <img src="images/kn44.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>KN-44</h3>
+
+        <p>
+            The KN-44 provides solid recoil control, dependable accuracy,
+            and versatile performance, making it ideal for balanced gameplay,
+            mid-range engagements, and consistent ranked matches.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- LACHMANN -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'LACHMANN',
+    'The LACHMANN is a precision-focused assault rifle built for stability, accuracy, and consistent performance in competitive combat. Featuring controllable recoil, reliable damage, and strong mid-to-long range effectiveness, the LACHMANN rewards players who value precision shooting and tactical engagements.',
+    'LACHMANN-1A2B4A8B9A',
+    'images/lachmanattachment.PNG'
+)">
+
+    <img src="images/lachman.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>LACHMANN</h3>
+
+        <p>
+            The LACHMANN offers exceptional recoil stability, dependable
+            accuracy, and versatile firepower, making it perfect for
+            controlled gunfights, tactical positioning, and ranked play.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- ODEN -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'ODEN',
+    'The ODEN is a hard-hitting assault rifle designed for players who prefer raw stopping power and precision. Featuring high damage output, excellent range, and strong penetration capabilities, the ODEN excels at eliminating enemies with fewer shots in medium to long-range engagements.',
+    'Oden-1D2C4A5A9B',
+    'images/odenattachment.PNG'
+)">
+
+    <img src="images/oden.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>ODEN</h3>
+
+        <p>
+            The ODEN delivers massive damage, impressive range,
+            and reliable accuracy, making it ideal for tactical
+            gameplay, precision shooting, and dominating long-range
+            firefights.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- RAM -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'RAM',
+    'The RAM is a high-performance assault rifle built for aggressive engagements and versatile combat situations. Featuring a fast fire rate, strong damage output, and responsive handling, the RAM excels at close-to-medium range fights while maintaining excellent pressure against opponents.',
+    'RAM-7-1A2B4A8A9A',
+    'images/ramattachment.PNG'
+)">
+
+    <img src="images/ram.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>RAM</h3>
+
+        <p>
+            The RAM provides excellent mobility, consistent recoil control,
+            and powerful firepower, making it ideal for aggressive pushes,
+            fast-paced gameplay, and dominating competitive matches.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- TYPE 19 -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'TYPE 19',
+    'The TYPE 19 is a modern assault rifle engineered for precision, versatility, and consistent battlefield performance. Featuring balanced recoil, strong accuracy, and dependable damage output, the TYPE 19 excels in both aggressive pushes and controlled medium-range engagements.',
+    'Type 19-1D2A4A8B9C',
+    'images/type 19atttachment.PNG'
+)">
+
+    <img src="images/type 19.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>TYPE 19</h3>
+
+        <p>
+            The TYPE 19 delivers reliable recoil control, versatile firepower,
+            and smooth handling, making it perfect for balanced gameplay,
+            tactical positioning, and competitive ranked matches.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- XM4 -->
+<div class="weapon-card" data-category="AR" onclick="openModal(
+    'XM4',
+    'The XM4 is a versatile assault rifle designed for balanced combat performance and reliable accuracy. Featuring controllable recoil, solid damage output, and dependable handling, the XM4 excels in medium-range engagements and adapts well to both aggressive and tactical playstyles.',
+    'XM4-1A2G4E8F9E',
+    'images/xm4attachment.PNG'
+)">
+
+    <img src="images/xm4.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>XM4</h3>
+
+        <p>
+            The XM4 offers excellent recoil stability, versatile firepower,
+            and smooth handling, making it ideal for balanced gameplay,
+            tactical positioning, and consistent ranked performance.
+        </p>
+
+        <div class="weapon-tag">AR CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- QQ9 -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'QQ9',
+    'Competitive SMG loadout built for close-range fights.',
+    'QQ9-1C2C4ABC9A',
+    'https://i.imgur.com/hFaqtWn.png'
+)">
+
+    <img src="https://i.imgur.com/QvoEY5w.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>QQ9</h3>
+
+        <p>
+            Competitive SMG loadout built for close-range fights.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- SWITCHBLADE -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'SWITCHBLADE',
+    'The Switchblade is a fast-firing SMG built for aggressive players who rely on speed, mobility, and close-range domination.',
+    'Switchblade X9-1C2C4B8A9A',
+    'https://i.imgur.com/Ai4aKQm.png'
+)">
+
+    <img src="https://i.imgur.com/AqFAqdq.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>SWITCHBLADE</h3>
+
+        <p>
+            The Switchblade delivers incredible mobility, rapid fire rate,
+            and deadly close-range performance, perfect for rushers and
+            fast-paced gameplay.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- BIZON -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'BIZON',
+    'The Bizon is a high-capacity SMG built for nonstop aggressive combat and fast-paced close-range engagements.',
+    'PP19 Bizon-1A2B4C8B9A',
+    'https://i.imgur.com/Sp6QZCf.png'
+)">
+
+    <img src="https://i.imgur.com/JpnACfy.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>BIZON</h3>
+
+        <p>
+            The Bizon features excellent magazine capacity, smooth recoil,
+            and reliable close-range firepower, ideal for aggressive rush
+            players and sustained fights.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- CX9 -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'CX-9',
+    'The CX-9 is a lightweight, ultra-fast SMG designed for aggressive close-quarters combat. With its blistering fire rate, sharp mobility, and controllable recoil, the CX-9 excels at shredding enemies in tight spaces and fast-paced engagements.',
+    'CX-9-1C2E4A5B8C',
+    'images/cx9attachment.PNG'
+)">
+
+    <img src="images/cx9.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>CX-9</h3>
+
+        <p>
+            The CX-9 delivers exceptional fire rate, smooth recoil control,
+            and superior mobility, making it perfect for aggressive rush
+            tactics and dominating close-range gunfights.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- QXR -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'QXR',
+    'The QXR is a fast-firing submachine gun built for aggressive close-range combat and high mobility gameplay. Featuring excellent handling, rapid fire rate, and reliable recoil control, the QXR excels at quick eliminations and maintaining pressure during fast-paced engagements.',
+    'QXR-1C2C4D5I8A',
+    'images/qxrattachment.PNG'
+)">
+
+    <img src="images/qxr.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>QXR</h3>
+
+        <p>
+            The QXR offers outstanding mobility, controllable recoil,
+            and rapid-fire performance, making it ideal for aggressive
+            rush strategies, close-range duels, and fast-paced matches.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- USS -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'USS 9',
+    'The USS 9 is a compact and highly mobile submachine gun built for fast-paced close-quarters combat. Featuring excellent fire rate, responsive handling, and dependable recoil control, the USS 9 excels at aggressive pushes and rapid eliminations in tight engagements.',
+    'USS 9-1C2D4A8C9A',
+    'images/uss attachment.PNG'
+)">
+
+    <img src="images/uss.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>USS 9</h3>
+
+        <p>
+            The USS 9 delivers impressive mobility, smooth recoil control,
+            and fast-firing performance, making it perfect for aggressive
+            rush gameplay, close-range fights, and high-speed engagements.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- VMP -->
+<div class="weapon-card" data-category="SMG" onclick="openModal(
+    'VMP',
+    'The VMP is a rapid-fire submachine gun built for aggressive close-range domination and high-speed combat. Featuring exceptional fire rate, outstanding mobility, and deadly close-quarters effectiveness, the VMP excels at overwhelming enemies in fast-paced engagements.',
+    'VMP-2D5H6B8D9C',
+    'images/vmp attachment.PNG'
+)">
+
+    <img src="images/vmp.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>VMP</h3>
+
+        <p>
+            The VMP offers incredible mobility, blistering fire rate,
+            and reliable close-range power, making it ideal for rush
+            tactics, fast flanks, and dominating aggressive gunfights.
+        </p>
+
+        <div class="weapon-tag">SMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- HOLGER -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'HOLGER',
+    'Long-range LMG with stable recoil and high damage.',
+    'Holger 26-1A4B5D8A9A',
+    'https://i.imgur.com/XHGjOKv.png'
+)">
+
+    <img src="https://i.imgur.com/JXSdyM2.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>HOLGER</h3>
+
+        <p>
+            Long-range LMG with stable recoil and high damage.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- RPD -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'RPD COOLING',
+    'Infinite ammo barrel setup for sustained pressure.',
+    'RPD-1A2D4C5E9A',
+    'https://i.imgur.com/HkjB2gI.png'
+)">
+
+    <img src="https://i.imgur.com/e9bx7tM.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>RPD COOLING</h3>
+
+        <p>
+            Infinite ammo barrel setup for sustained pressure.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- CHOPPER -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'CHOPPER',
+    'The Chopper is a heavy-duty LMG designed for relentless suppression, high-capacity fire, and dominating extended engagements.',
+    'Chopper-1E2A5E7G8A',
+    'images/chopperattachment.PNG'
+)">
+
+    <img src="images/chopper.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>CHOPPER</h3>
+
+        <p>
+            The Chopper delivers massive magazine capacity, continuous
+            firepower, and excellent sustained pressure, ideal for
+            locking down lanes and overwhelming enemies in long fights.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- DP27 -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'DP27',
+    'The DP27 is a powerful light machine gun built for sustained fire and battlefield control. Featuring heavy damage, impressive accuracy, and a large pan magazine, the DP27 excels at suppressing enemies and dominating medium to long-range engagements with relentless firepower.',
+    'DP27-1E2A5E7G8A',
+    'images/dp27attachment.PNG'
+)">
+
+    <img src="images/dp27.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>DP27</h3>
+
+        <p>
+            The DP27 delivers strong damage output, reliable recoil control,
+            and excellent sustained fire, making it ideal for defensive
+            positioning, suppressive fire, and overwhelming enemies in
+            extended firefights.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- HADES -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'HADES',
+    'The HADES is a versatile light machine gun engineered for aggressive suppressive fire and sustained combat performance. With its fast fire rate, solid accuracy, and excellent mobility for an LMG, the HADES excels at controlling objectives and overwhelming enemies in medium to long-range engagements.',
+    'Hades-1E2A5E7G8A',
+    'images/hadesattachment.PNG'
+)">
+
+    <img src="images/hades.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>HADES</h3>
+
+        <p>
+            The HADES combines strong sustained firepower, manageable recoil,
+            and impressive versatility, making it ideal for aggressive lane
+            control, objective defense, and dominating prolonged firefights.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- MG42 -->
+<div class="weapon-card" data-category="LMG" onclick="openModal(
+    'MG42',
+    'The MG42 is a devastating light machine gun built for unmatched fire rate and relentless suppressive power. Known for its rapid-fire performance, high ammo capacity, and overwhelming battlefield presence, the MG42 excels at shredding enemies and locking down key positions in intense combat situations.',
+    'MG42-1E2D5E8B9A',
+    'images/mg42attachment.PNG'
+)">
+
+    <img src="images/mg42.PNG" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>MG42</h3>
+
+        <p>
+            The MG42 delivers extreme fire rate, powerful sustained damage,
+            and strong suppressive capabilities, making it perfect for
+            holding objectives, controlling lanes, and overwhelming enemies
+            in extended firefights.
+        </p>
+
+        <div class="weapon-tag">LMG CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- SO-14 -->
+<div class="weapon-card" data-category="MARKSMAN" onclick="openModal(
+    'SO-14',
+    'Powerful semi-auto marksman rifle build with high damage, controllable recoil, and fast follow-up shots. Great for mid to long-range fights.',
+    'SO-14-7X9A2B5C1D',
+    'https://i.imgur.com/FKhqEUE.png'
+)">
+
+    <img src="https://i.imgur.com/KO7Fy1e.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>SO-14</h3>
+
+        <p>
+            Heavy-hitting marksman build with fast tap-fire accuracy and strong mid-range damage.
+        </p>
+
+        <div class="weapon-tag">MARKSMAN CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- DLQ33 -->
+<div class="weapon-card" data-category="SNIPER" onclick="openModal(
+    'DLQ33',
+    'One-shot sniper setup optimized for quickscoping gameplay.',
+    'DL Q33-1B2A4A5A6A',
+    'https://i.imgur.com/p24Dulo.png'
+)">
+
+    <img src="https://i.imgur.com/vJujOHU.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>DLQ33</h3>
+
+        <p>
+            One-shot sniper setup optimized for quickscoping gameplay.
+        </p>
+
+        <div class="weapon-tag">SNIPER CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- LOCUS -->
+<div class="weapon-card" data-category="SNIPER" onclick="openModal(
+    'LOCUS',
+    'Lightweight sniper build with fast mobility.',
+    'Locus-2A4B5H8C9C',
+    'https://i.imgur.com/BNH7JlY.png'
+)">
+
+    <img src="https://i.imgur.com/4K0zbby.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>LOCUS ELITE</h3>
+
+        <p>
+            Lightweight sniper build with fast mobility.
+        </p>
+
+        <div class="weapon-tag">SNIPER CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- TUNDRA -->
+<div class="weapon-card" data-category="SNIPER" onclick="openModal(
+    'TUNDRA',
+    'Powerful bolt-action sniper rifle with high damage, fast bullet velocity, and excellent accuracy. Built for aggressive quickscoping and long-range precision shots.',
+    'Locus-2A4B5H8C9C',
+    'https://i.imgur.com/qWB8aaB.png'
+)">
+
+    <img src="https://i.imgur.com/phoWAu0.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>TUNDRA</h3>
+
+        <p>
+            Heavy-hitting sniper rifle with fast ADS speed and reliable one-shot kill potential.
+        </p>
+
+        <div class="weapon-tag">SNIPER CLASS</div>
+
+    </div>
+
+</div>
+
+<!-- 3LINE RIFLE -->
+<div class="weapon-card" data-category="SNIPER" onclick="openModal(
+    '3-LINE RIFLE',
+    'Hard-hitting sniper rifle with exceptional range, strong penetration, and smooth handling. Designed for precise long-range eliminations and aggressive quickscope gameplay.',
+    '3-Line Rifle-2A4B5A7D8A',
+    'https://i.imgur.com/Q61Knhw.png'
+)">
+
+    <img src="https://i.imgur.com/7I5Uczf.png" class="weapon-img">
+
+    <div class="weapon-content">
+
+        <h3>3-LINE RIFLE</h3>
+
+        <p>
+            High-damage sniper build with accurate shots, fast mobility, and consistent one-shot power.
+        </p>
+
+        <div class="weapon-tag">SNIPER CLASS</div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="weaponModal">
+
+    <div class="modal-box">
+
+        <span class="close-btn" onclick="closeModal()">✖</span>
+
+        <img id="modalImage" class="modal-img">
+
+        <p id="modalDesc">
+            Description
+        </p>
+
+        <div class="code-box" id="modalCode">
+            CODE HERE
+        </div>
+
+        <button class="copy-btn" onclick="copyModalCode(this)">
+            Copy Attachment Code
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<div class="footer-line"></div>
+
+<section class="red-section">
+
+    <h2 class="red-title">
+        <i class="fas fa-bolt"></i>
+        Perks</h2>
+
+    <div class="perk-box">
+
+        <h3>Red Wildcard</h3>
+
+        <div class="perk-grid">
+            <div class="perk">Lightweight</div>
+            <div class="perk">Gung-Ho</div>
+            <div class="perk">Dead Silence</div>
+            <div class="perk">Restock</div>
+        </div>
+
+    </div>
+
+    <h2 class="red-title"; class="section-title"> 
+            <i class="fas fa-cog"></i>
+            Settings</h2>
+
+    <div class="settings-grid">
+
+        <div class="setting-card">
+
+            <h4>Sensitivity</h4>
+
+            <p>Multi-purpose settings for all modes</p>
+
+            <div class="code-box" id="sensCode">
+                7619331078077366070
+            </div>
+
+            <button class="copy-btn" onclick="copyCode('sensCode', this)">
+                Copy Code
+            </button>
+
+        </div>
+
+        <div class="setting-card">
+
+            <h4>HUD Layout</h4>
+
+            <p>Optimized 4-finger claw setup (Ipad)</p>
+
+            <div class="code-box" id="hudCode">
+                727414533461238767
+            </div>
+
+            <button class="copy-btn" onclick="copyCode('hudCode', this)">
+                Copy Code
+            </button>
+
+        </div>
+
+    </div>
+
+<script>
+
+function toggleTheme(){
+
+    const body = document.body;
+    const btn = document.getElementById('themeToggle');
+    const icon = btn.querySelector('i');
+
+    body.classList.toggle('light-mode');
+
+    const isLight = body.classList.contains('light-mode');
+
+    if(isLight){
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+
+}
+
+/* COPY CODE */
+
+function copyCode(id, btn){
+
+    const code = document.getElementById(id).innerText;
+
+    navigator.clipboard.writeText(code);
+
+    const original = btn.innerHTML;
+
+    btn.innerHTML = "✅ Copied!";
+    btn.style.background = "#16a34a";
+
+    setTimeout(() => {
+
+        btn.innerHTML = original;
+        btn.style.background = "";
+
+    }, 2000);
+
+}
+
+/* MODAL */
+
+function openModal(title, desc, code, image){
+
+    document.getElementById("weaponModal").style.display = "flex";
+
+    document.getElementById("modalImage").src = image;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("modalCode").innerText = code;
+
+}
+
+function closeModal(){
+
+    document.getElementById("weaponModal").style.display = "none";
+
+}
+
+function copyModalCode(btn){
+
+    const code = document.getElementById("modalCode").innerText;
+
+    navigator.clipboard.writeText(code);
+
+    const original = btn.innerHTML;
+
+    btn.innerHTML = "✅ Copied!";
+
+    btn.style.background = "#16a34a";
+
+    setTimeout(() => {
+
+        btn.innerHTML = original;
+
+        btn.style.background = "";
+
+    }, 2000);
+
+}
+
+/* CATEGORY FILTER */
+
+function toggleTheme(){
+
+    const body = document.body;
+    const btn = document.getElementById('themeToggle');
+    const icon = btn.querySelector('i');
+
+    body.classList.toggle('light-mode');
+
+    const isLight = body.classList.contains('light-mode');
+
+    if(isLight){
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+/* COPY CODE */
+function copyCode(id, btn){
+
+    const code = document.getElementById(id).innerText;
+
+    navigator.clipboard.writeText(code);
+
+    const original = btn.innerHTML;
+
+    btn.innerHTML = "✅ Copied!";
+    btn.style.background = "#16a34a";
+
+    setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = "";
+    }, 2000);
+}
+
+/* MODAL */
+function openModal(title, desc, code, image){
+
+    document.getElementById("weaponModal").style.display = "flex";
+
+    document.getElementById("modalImage").src = image;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("modalCode").innerText = code;
+}
+
+function closeModal(){
+    document.getElementById("weaponModal").style.display = "none";
+}
+
+function copyModalCode(btn){
+
+    const code = document.getElementById("modalCode").innerText;
+
+    navigator.clipboard.writeText(code);
+
+    const original = btn.innerHTML;
+
+    btn.innerHTML = "✅ Copied!";
+    btn.style.background = "#16a34a";
+
+    setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.background = "";
+    }, 2000);
+}
+
+/* 🔥 CATEGORY + SEARCH FIX (COMBINED) */
+
+const searchInput = document.querySelector('.search input');
+
+searchInput.addEventListener('input', applyFilters);
+
+function filterCards(category, button){
+
+    const buttons = document.querySelectorAll('.cat-btn');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    button.classList.add('active');
+
+    applyFilters();
+}
+
+function applyFilters(){
+
+    const searchValue = document.querySelector('.search input').value.toLowerCase();
+
+    const activeBtn = document.querySelector('.cat-btn.active');
+    const activeCategory = activeBtn ? activeBtn.innerText.trim().toUpperCase() : "ALL";
+
+    const cards = document.querySelectorAll('.weapon-card');
+
+    cards.forEach(card => {
+
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        const desc = card.querySelector('p').innerText.toLowerCase();
+        const category = card.dataset.category.toUpperCase();
+
+        const matchSearch = title.includes(searchValue) || desc.includes(searchValue);
+        const matchCategory = activeCategory === "ALL" || category === activeCategory;
+
+        card.style.display = (matchSearch && matchCategory) ? "block" : "none";
+
+    });
+}
+
+/* QR MODAL */
+
+function openQR(){
+
+    document.getElementById("qrModal").style.display = "flex";
+
+}
+
+function closeQR(){
+
+    document.getElementById("qrModal").style.display = "none";
+
+}
+
+/* FOV ACTIVE ANIMATION */
+
+function setActive(card){
+
+    const cards = document.querySelectorAll('.fov-card');
+
+    cards.forEach(c => {
+        c.classList.remove('active');
+    });
+
+    card.classList.add('active');
+
+}
+
+</script>
+    <h2 class="red-title" style="margin-top:90px;">
+        👁 Field Of View
+    </h2>
+
+    <div class="fov-grid">
+
+        <div class="fov-card" onclick="setActive(this)">
+            <h2>90</h2>
+            <p>Balanced visibility and accuracy</p>
+        </div>
+
+        <div class="fov-card active" onclick="setActive(this)">
+            <h2>100</h2>
+            <p>Competitive recommended FOV</p>
+        </div>
+
+    </div>
+
+    <div class="fancy-title">
+
+    <span></span>
+
+    <h2 style="display:flex; align-items:center; gap:12px; font-size:42px;">
+        
+        <!-- SVG ICON -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-book-open w-7 h-7 text-purple-400" aria-hidden="true">
+
+            <path d="M12 7v14"></path>
+            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+
+        </svg>
+
+        HOW TO USE
+    </h2>
+
+    <span></span>
+
+</div>
+
+    <div class="steps">
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>Copy Code</h4>
+            <p>Click copy button on any settings card.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>Open Game</h4>
+            <p>Launch CODM and open settings.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>Import</h4>
+            <p>Paste the code into the import section.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <h4>Dominate</h4>
+            <p>Enjoy pro-level recoil control and movement.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="footer-line"></div>
+
+<section class="mini-panel">
+
+    <div class="mini-logo">MIGS</div>
+
+    <div class="mini-sub">
+        umuubos ng lima, minamahal yung isa
+    </div>
+
+    <div class="mini-copy">
+        © 2025 Migs. All rights reserved.
+    </div>
+
+</section>
+
+<div class="mini-bar">
+    OPTIMIZED FOR COMPETITIVE PLAY
+</div>
+
+<!-- QR MODAL -->
+
+<div class="qr-modal" id="qrModal" onclick="closeQR()">
+
+    <div class="qr-content" onclick="event.stopPropagation()">
+
+        <button class="qr-close" onclick="closeQR()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="qr-title">
+            <i class="fas fa-gift"></i>
+            Favorite direct ni Migs
+        </div>
+
+        <div class="qr-text">
+            Scan to send GCash gift
+        </div>
+
+        <img 
+            src="https://i.imgur.com/4HiNIDY.jpeg"
+            class="qr-image"
+        >
+
+        <div class="qr-text small">
+            Thank you for your support!
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
