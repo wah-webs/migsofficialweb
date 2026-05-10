@@ -25,6 +25,10 @@ body{
     transition:.3s;
 }
 
+img{
+    max-width:100%;
+}
+
 /* BACKGROUND */
 
 body::before{
@@ -767,31 +771,176 @@ nav{
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media (max-width: 900px){
 
     nav{
-        padding:0 20px;
+        height:auto;
+        padding:14px;
+        flex-direction:column;
+        gap:16px;
     }
 
-    .hero h2{
-        font-size:56px;
-    }
-
-    .hero p{
-        font-size:16px;
+    .logo{
+        width:100%;
+        justify-content:center;
     }
 
     .logo h1{
-        font-size:22px;
+        font-size:24px;
     }
 
-    .icon-btn{
-        width:42px;
-        height:42px;
+    .logo-box{
+        width:48px;
+        height:48px;
+        font-size:24px;
+    }
+
+    .nav-controls{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .social-links{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .control-btn,
+    .social-btn{
+        width:44px;
+        height:44px;
+        font-size:18px;
+    }
+
+    .hero{
+        padding:60px 16px 20px;
+    }
+
+    .hero h2{
+        font-size:clamp(48px, 15vw, 90px);
+        letter-spacing:2px;
+        line-height:1;
+    }
+
+    .hero p{
+        font-size:14px;
+        letter-spacing:2px;
+        margin-top:10px;
+    }
+
+    .stats{
+        gap:16px;
+    }
+
+    .stat-card{
+        width:140px;
+        height:140px;
+    }
+
+    .stat-card h3{
+        font-size:42px;
+    }
+
+    .section{
+        margin-top:70px;
+        padding:0 14px 60px;
+    }
+
+    .section-title{
+        font-size:34px;
+        margin-bottom:30px;
+    }
+
+    .search{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .search input{
+        font-size:16px;
+    }
+
+    .categories{
+        gap:10px;
+    }
+
+    .cat-btn{
+        padding:12px 18px;
+        font-size:14px;
+        border-radius:12px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .weapon-img{
+        height:180px;
+    }
+
+    .weapon-content{
+        padding:16px;
+    }
+
+    .weapon-card h3{
+        font-size:18px;
     }
 
     .perk-grid{
         grid-template-columns:1fr;
+    }
+
+    .settings-grid{
+        grid-template-columns:1fr;
+    }
+
+    .setting-card{
+        padding:22px;
+    }
+
+    .code-box{
+        padding:18px;
+        font-size:13px;
+    }
+
+    .fov-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .fancy-title{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .fancy-title span{
+        width:70px;
+    }
+
+    .fancy-title h2{
+        font-size:28px !important;
+        text-align:center;
+    }
+
+    .modal-box{
+        padding:24px;
+    }
+
+    .modal-img{
+        height:180px;
+    }
+
+    .qr-content{
+        padding:24px;
+    }
+
+    .qr-image{
+        width:90%;
     }
 
 }
