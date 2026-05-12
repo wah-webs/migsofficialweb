@@ -11,6 +11,757 @@
 
 <style>
 
+/* ====================================
+   ULTRA PREMIUM UNIQUE DESIGN
+==================================== */
+
+/* RGB BORDER ANIMATION */
+
+.weapon-card::after{
+    content:'';
+    position:absolute;
+    inset:-1px;
+    border-radius:28px;
+    padding:1px;
+
+    background:linear-gradient(
+        130deg,
+        transparent,
+        rgba(0,191,255,.8),
+        transparent,
+        rgba(255,0,80,.6),
+        transparent
+    );
+
+    background-size:300% 300%;
+
+    animation:rgbBorder 6s linear infinite;
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+
+    opacity:0;
+    transition:.4s;
+}
+
+.weapon-card:hover::after{
+    opacity:1;
+}
+
+@keyframes rgbBorder{
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:300% 50%;
+    }
+}
+
+/* PREMIUM CARD LIGHT */
+
+.weapon-card{
+    overflow:hidden;
+}
+
+.weapon-card .weapon-content{
+    position:relative;
+    z-index:2;
+}
+
+.weapon-card::before{
+    content:'';
+    position:absolute;
+    width:240px;
+    height:240px;
+    background:radial-gradient(circle,
+    rgba(0,191,255,.16),
+    transparent 70%);
+    top:-80px;
+    right:-80px;
+    transition:.5s;
+}
+
+.weapon-card:hover::before{
+    transform:scale(1.4);
+}
+
+/* IMAGE CINEMATIC */
+
+.weapon-img{
+    position:relative;
+    filter:
+    saturate(1.05)
+    contrast(1.06);
+
+    transition:.5s ease;
+}
+
+.weapon-card:hover .weapon-img{
+    transform:scale(1.12);
+    filter:
+    saturate(1.2)
+    brightness(1.08)
+    contrast(1.08);
+}
+
+/* HERO MASSIVE GLOW */
+
+.hero::after{
+    content:'';
+    position:absolute;
+    width:800px;
+    height:400px;
+
+    background:radial-gradient(circle,
+    rgba(0,191,255,.15),
+    transparent 70%);
+
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    filter:blur(60px);
+
+    z-index:-2;
+}
+
+/* TITLE STROKE EFFECT */
+
+.hero h2{
+    position:relative;
+    font-weight:900;
+
+    text-shadow:
+    0 0 20px rgba(0,191,255,.6),
+    0 0 40px rgba(0,191,255,.4),
+    0 0 80px rgba(0,191,255,.2);
+}
+
+/* STATS PREMIUM */
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(15,20,30,.95),
+        rgba(5,8,15,.95)
+    );
+
+    backdrop-filter:blur(16px);
+}
+
+.stat-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        145deg,
+        rgba(0,191,255,.12),
+        transparent 50%
+    );
+
+    opacity:0;
+    transition:.4s;
+}
+
+.stat-card:hover::before{
+    opacity:1;
+}
+
+.stat-card:hover{
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 35px rgba(0,191,255,.2),
+    0 0 80px rgba(0,191,255,.12);
+}
+
+/* SEARCH BAR FUTURISTIC */
+
+.search{
+    position:relative;
+    overflow:hidden;
+}
+
+.search::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.06),
+        transparent
+    );
+
+    transform:translateX(-100%);
+}
+
+.search:hover::before{
+    animation:shineBar 1.2s ease;
+}
+
+@keyframes shineBar{
+    100%{
+        transform:translateX(100%);
+    }
+}
+
+/* BUTTON 3D EFFECT */
+
+.copy-btn,
+.cat-btn,
+.control-btn{
+    transform-style:preserve-3d;
+}
+
+.copy-btn:hover,
+.cat-btn:hover,
+.control-btn:hover{
+    transform:
+    translateY(-5px)
+    rotateX(8deg);
+}
+
+/* SECTION TITLES */
+
+.section-title,
+.red-title,
+.fancy-title h2{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    text-shadow:
+    0 0 15px rgba(0,191,255,.3);
+}
+
+.section-title::after,
+.red-title::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:-14px;
+    transform:translateX(-50%);
+
+    width:70%;
+    height:3px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #00bfff,
+        transparent
+    );
+}
+
+/* MODAL UPGRADE */
+
+.modal{
+    backdrop-filter:blur(8px);
+}
+
+.modal-box{
+    overflow:hidden;
+    position:relative;
+}
+
+.modal-box::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        145deg,
+        rgba(0,191,255,.08),
+        transparent 50%
+    );
+
+    pointer-events:none;
+}
+
+/* QR MODAL PREMIUM */
+
+.qr-content{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(10,15,25,.96),
+        rgba(5,8,15,.96)
+    );
+
+    backdrop-filter:blur(18px);
+}
+
+/* MINI FOOTER */
+
+.mini-panel{
+    position:relative;
+}
+
+.mini-panel::before{
+    content:'';
+    position:absolute;
+
+    width:300px;
+    height:120px;
+
+    background:radial-gradient(circle,
+    rgba(0,191,255,.15),
+    transparent 70%);
+
+    left:50%;
+    top:0;
+
+    transform:translateX(-50%);
+    filter:blur(40px);
+}
+
+/* CUSTOM CURSOR GLOW */
+
+body{
+    cursor:default;
+}
+
+/* GLASS EFFECT */
+
+.setting-card,
+.perk-box,
+.fov-card,
+.step-card{
+    background:
+    linear-gradient(
+        180deg,
+        rgba(20,25,35,.82),
+        rgba(10,15,20,.82)
+    );
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.05);
+}
+
+/* HOVER LIGHT */
+
+.setting-card:hover,
+.step-card:hover,
+.fov-card:hover{
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 0 35px rgba(0,191,255,.18);
+}
+
+/* PREMIUM ANIMATION */
+
+.weapon-card,
+.setting-card,
+.step-card,
+.stat-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* =========================
+   PREMIUM GAMING DESIGN
+========================= */
+
+/* SMOOTH SCROLL */
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ANIMATED BACKGROUND */
+
+body::after{
+    animation:bgMove 12s linear infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{
+        transform:scale(1) translate(0,0);
+    }
+    100%{
+        transform:scale(1.15) translate(-40px,-20px);
+    }
+}
+
+/* HERO PREMIUM */
+
+.hero{
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#00bfff55,transparent 70%);
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
+    filter:blur(60px);
+    z-index:-1;
+}
+
+.hero h2{
+    font-size:110px;
+    font-weight:900;
+    letter-spacing:8px;
+
+    background:linear-gradient(
+        90deg,
+        #00bfff,
+        #ffffff,
+        #00bfff,
+        #66ffff
+    );
+
+    background-size:300% auto;
+
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 6s linear infinite;
+    text-shadow:
+    0 0 20px rgba(0,191,255,.45),
+    0 0 60px rgba(0,191,255,.2);
+}
+
+@keyframes shine{
+    to{
+        background-position:300% center;
+    }
+}
+
+.hero p{
+    color:#b6c2d1;
+    font-size:18px;
+    letter-spacing:6px;
+    margin-top:16px;
+}
+
+/* PREMIUM NAVBAR */
+
+nav{
+    background:rgba(10,10,15,.45);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    box-shadow:
+    0 0 25px rgba(0,191,255,.08);
+}
+
+/* LOGO EFFECT */
+
+.logo-box{
+    position:relative;
+    overflow:hidden;
+}
+
+.logo-box::before{
+    content:'';
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(
+        45deg,
+        #00bfff,
+        #0066ff,
+        #00bfff
+    );
+    animation:rotateBorder 4s linear infinite;
+    z-index:-1;
+}
+
+@keyframes rotateBorder{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* BUTTONS */
+
+.control-btn,
+.social-btn,
+.cat-btn{
+    backdrop-filter:blur(10px);
+}
+
+.control-btn:hover,
+.social-btn:hover,
+.cat-btn:hover{
+    transform:translateY(-6px) scale(1.05);
+}
+
+/* CATEGORY BUTTON */
+
+.cat-btn.active{
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #0066ff
+    );
+
+    border:none;
+
+    box-shadow:
+    0 0 20px rgba(0,191,255,.4),
+    0 0 50px rgba(0,191,255,.18);
+}
+
+/* PREMIUM CARDS */
+
+.weapon-card{
+    background:rgba(10,15,25,.75);
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.03);
+
+    position:relative;
+}
+
+.weapon-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        145deg,
+        rgba(0,191,255,.08),
+        transparent 40%,
+        rgba(255,0,80,.06)
+    );
+
+    opacity:0;
+    transition:.4s;
+}
+
+.weapon-card:hover::before{
+    opacity:1;
+}
+
+.weapon-card:hover{
+    transform:
+    translateY(-10px)
+    scale(1.02);
+
+    border-color:#00bfff;
+
+    box-shadow:
+    0 0 30px rgba(0,191,255,.25),
+    0 0 70px rgba(0,191,255,.15);
+}
+
+/* IMAGE HOVER */
+
+.weapon-img{
+    transition:.5s ease;
+}
+
+.weapon-card:hover .weapon-img{
+    transform:scale(1.08);
+    filter:brightness(1.08);
+}
+
+/* WEAPON TITLE */
+
+.weapon-card h3{
+    font-size:22px;
+    color:white;
+}
+
+.weapon-tag{
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    box-shadow:
+    0 0 15px rgba(0,191,255,.35);
+}
+
+/* SEARCH BAR */
+
+.search{
+    background:rgba(10,15,25,.75);
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+    0 0 30px rgba(0,191,255,.08);
+}
+
+.search:focus-within{
+    border-color:#00bfff;
+
+    box-shadow:
+    0 0 40px rgba(0,191,255,.2);
+}
+
+/* PREMIUM COPY BUTTON */
+
+.copy-btn{
+    position:relative;
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    border:none;
+
+    box-shadow:
+    0 0 20px rgba(0,191,255,.25);
+}
+
+.copy-btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+
+    transition:.7s;
+}
+
+.copy-btn:hover::before{
+    left:120%;
+}
+
+.copy-btn:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 35px rgba(0,191,255,.45),
+    0 0 80px rgba(0,191,255,.15);
+}
+
+/* SETTINGS */
+
+.setting-card,
+.perk-box,
+.fov-card{
+    background:rgba(10,15,25,.72);
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.08);
+}
+
+/* MODAL */
+
+.modal-box{
+    background:rgba(10,15,25,.92);
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(0,191,255,.25);
+
+    box-shadow:
+    0 0 40px rgba(0,191,255,.2);
+}
+
+/* FLOATING ANIMATION */
+
+.stat-card,
+.setting-card,
+.weapon-card,
+.fov-card{
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        #00bfff,
+        #0044ff
+    );
+
+    border-radius:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero h2{
+        font-size:64px;
+        letter-spacing:3px;
+    }
+
+    .hero p{
+        font-size:13px;
+        letter-spacing:2px;
+    }
+
+}
+
 *{
     margin:0;
     padding:0;
@@ -19,10 +770,13 @@
 
 body{
     font-family:'Montserrat',sans-serif;
-    background:#050505;
+    background:
+    radial-gradient(circle at top left,#00111f 0%,#050505 40%),
+    radial-gradient(circle at bottom right,#220000 0%,#050505 40%);
     color:white;
     overflow-x:hidden;
     transition:.3s;
+    min-height:100vh;
 }
 
 img{
@@ -100,11 +854,12 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:0 60px;
-    background:rgba(0,0,0,.7);
-    backdrop-filter:blur(10px);
+    background:rgba(5,8,15,.55);
+    backdrop-filter:blur(20px);
     position:sticky;
     top:0;
     z-index:100;
+    box-shadow:0 0 30px rgba(0,191,255,.08);
 }
 
 .logo{
@@ -215,35 +970,110 @@ nav{
 
 .stats{
     margin-top:50px;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(140px, 1fr));
+    gap:18px;
+    max-width:700px;
+    margin-inline:auto;
+
+    padding:18px;
+    border-radius:24px;
+
+    background:rgba(10,15,25,.35);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    position:relative;
+    overflow:hidden;
 }
 
 .stat-card{
-    width:170px;
-    height:170px;
-    border-radius:24px;
-    background:#0c0f13;
+    position:relative;
+    border-radius:20px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(15,20,30,.9),
+        rgba(8,10,15,.95)
+    );
+
     border:1px solid rgba(255,255,255,.08);
+
+    padding:18px 12px;
+
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
-    transition:.3s;
+    justify-content:center;
+
+    gap:6px;
+
+    transition:.35s ease;
+
+    overflow:hidden;
+}
+
+.stat-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,191,255,.15),
+        transparent
+    );
+
+    transition:.6s;
+}
+
+.stat-card:hover::before{
+    left:120%;
 }
 
 .stat-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.05);
+
     border-color:#00bfff;
-    box-shadow:0 0 30px rgba(0,191,255,.25);
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.25),
+    0 0 60px rgba(0,191,255,.15);
+}
+
+.stat-icon{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,191,255,.1);
+    border:1px solid rgba(0,191,255,.25);
+
+    box-shadow:0 0 20px rgba(0,191,255,.15);
+
+    font-size:22px;
+    color:#00d9ff;
 }
 
 .stat-card h3{
-    font-size:52px;
-    color:#00bfff;
-    margin-top:10px;
+    font-size:34px;
+    font-weight:900;
+
+    background:linear-gradient(90deg,#00bfff,#ffffff);
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    letter-spacing:1px;
 }
 
 .stat-card p{
@@ -302,25 +1132,64 @@ nav{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:16px;
+    gap:14px;
+
+    padding:14px;
+    background:rgba(10,15,25,.4);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:20px;
+    backdrop-filter:blur(14px);
+    max-width:900px;
+    margin-inline:auto;
 }
 
 .cat-btn{
-    padding:18px 34px;
-    border-radius:16px;
-    background:#101215;
+    position:relative;
+    padding:14px 22px;
+    border-radius:999px;
+
+    background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.08);
+
     color:#aaa;
-    font-size:18px;
+    font-size:14px;
     font-weight:700;
+    letter-spacing:1px;
+
     cursor:pointer;
     transition:.3s;
+
+    overflow:hidden;
 }
 
-.cat-btn.active,
+.cat-btn::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,
+        transparent,
+        rgba(0,191,255,.15),
+        transparent
+    );
+    transform:translateX(-120%);
+    transition:.5s;
+}
+
+.cat-btn:hover::before{
+    transform:translateX(120%);
+}
+
 .cat-btn:hover{
-    background:#00bfff;
+    transform:translateY(-3px);
+    border-color:#00bfff;
     color:white;
+    box-shadow:0 0 20px rgba(0,191,255,.25);
+}
+
+.cat-btn.active{
+    background:linear-gradient(135deg,#00bfff,#005eff);
+    color:white;
+    border:none;
     box-shadow:0 0 25px rgba(0,191,255,.35);
 }
 
@@ -329,30 +1198,71 @@ nav{
 .cards{
     margin-top:60px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:24px;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
     max-width:1400px;
     margin-inline:auto;
+    padding:0 10px;
 }
 
 .weapon-content{
-    padding:18px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
+.weapon-tag{
+    align-self:flex-start;
+    padding:6px 12px;
+    border-radius:999px;
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+
+    background:rgba(0,191,255,.15);
+    border:1px solid rgba(0,191,255,.3);
+    color:#00d9ff;
+}
+
+
 .weapon-card{
-    background:#090b10;
-    border-radius:22px;
+    background:rgba(10,15,25,.75);
+    backdrop-filter:blur(16px);
+    border-radius:28px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,.08);
-    transition:.3s;
+    transition:.35s ease;
     text-align:left;
     padding:0;
+    position:relative;
+}
+
+.weapon-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        135deg,
+        rgba(0,191,255,.08),
+        transparent 40%,
+        rgba(255,0,80,.06)
+    );
+    opacity:0;
+    transition:.3s;
+}
+
+.weapon-card:hover::before{
+    opacity:1;
 }
 
 .weapon-card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-10px) scale(1.02);
     border-color:#00bfff;
-    box-shadow:0 0 25px rgba(0,191,255,.18);
+    box-shadow:
+    0 0 35px rgba(0,191,255,.25),
+    0 0 70px rgba(0,191,255,.12);
 }
 
 .weapon-card h3{
@@ -487,25 +1397,46 @@ nav{
     width:100%;
     padding:16px;
     border:none;
-    border-radius:16px;
-    background:linear-gradient(135deg,#00bfff,#ff0000);
+    border-radius:18px;
+    background:linear-gradient(135deg,#00bfff,#005eff);
     color:white;
-    font-weight:700;
+    font-weight:800;
     cursor:pointer;
-    transition:.3s;
+    transition:.35s;
     font-size:16px;
     letter-spacing:1px;
+    position:relative;
+    overflow:hidden;
     box-shadow:
     0 0 20px rgba(0,191,255,.25),
-    inset 0 0 12px rgba(255,255,255,.06);
+    inset 0 0 12px rgba(255,255,255,.08);
+}
+
+.copy-btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+    transition:.6s;
+}
+
+.copy-btn:hover::before{
+    left:120%;
 }
 
 .copy-btn:hover{
-    transform:translateY(-4px) scale(1.02);
-    background:linear-gradient(135deg,#ff5555,#ff1a1a);
+    transform:translateY(-4px);
     box-shadow:
     0 0 35px rgba(0,191,255,.45),
-    inset 0 0 14px rgba(255,255,255,.08);
+    0 0 70px rgba(0,191,255,.15);
 }
 
 .copy-btn:active{
@@ -861,6 +1792,31 @@ nav{
         font-size:16px;
     }
 
+    .search{
+        max-width:800px;
+        margin:0 auto;
+        padding:18px 20px;
+
+        border-radius:999px;
+
+        background:rgba(10,15,25,.55);
+        backdrop-filter:blur(18px);
+
+        border:1px solid rgba(255,255,255,.06);
+
+        display:flex;
+        align-items:center;
+        gap:12px;
+
+        transition:.3s;
+    }
+
+    .search:focus-within{
+        border-color:#00bfff;
+        box-shadow:0 0 30px rgba(0,191,255,.2);
+        transform:scale(1.01);
+    }
+
     .categories{
         gap:10px;
     }
@@ -945,6 +1901,93 @@ nav{
 
 }
 
+/* GLOW EFFECTS */
+
+.hero h2{
+    background:linear-gradient(90deg,#00bfff,#ffffff,#00bfff);
+    background-size:200% auto;
+    color:transparent;
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+    to{
+        background-position:200% center;
+    }
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#00bfff,#0044ff);
+    border-radius:20px;
+}
+
+/* FLOATING ANIMATION */
+
+.stat-card,
+.setting-card,
+.fov-card{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.bottom-btn-container{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+}
+
+.bottom-btn{
+    padding:14px 40px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(0,140,255,0.5);
+}
+
+.bottom-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(0,140,255,0.8);
+}
+
+.bottom-card-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.bottom-card{
+    width:620px; /* pwede mo baguhin */
+}
+
 </style>
 </head>
 <body>
@@ -1004,7 +2047,7 @@ nav{
 
     <div class="stat-card">
 
-        <div style="font-size:30px; color:#00bfff;">
+        <div class="stat-icon">
             <i class="fas fa-crosshairs"></i>
         </div>
 
@@ -1016,7 +2059,7 @@ nav{
 
     <div class="stat-card">
 
-        <div style="font-size:30px; color:#00bfff;">
+        <div class="stat-icon">
             <i class="fas fa-star"></i>
         </div>
 
@@ -1028,7 +2071,7 @@ nav{
 
     <div class="stat-card">
 
-        <div style="font-size:30px; color:#00bfff;">
+        <div class="stat-icon">
             <i class="fas fa-cog"></i>
         </div>
 
@@ -1115,7 +2158,7 @@ nav{
 <div class="weapon-card" data-category="SG" onclick="openModal(
     'HS0405',
     'One-shot shotgun build for close combat dominance.',
-    'SG123456',
+    'HSO405-1F2A4A5E6B',
     'https://i.imgur.com/4EY9F8m.png'
 )">
 
@@ -1787,7 +2830,7 @@ nav{
 <div class="weapon-card" data-category="SNIPER" onclick="openModal(
     'TUNDRA',
     'Powerful bolt-action sniper rifle with high damage, fast bullet velocity, and excellent accuracy. Built for aggressive quickscoping and long-range precision shots.',
-    'Locus-2A4B5H8C9C',
+    'LW3-Tundra-2B5A7B8A9E',
     'https://i.imgur.com/qWB8aaB.png'
 )">
 
@@ -1881,45 +2924,67 @@ nav{
 
     </div>
 
-    <h2 class="red-title"; class="section-title"> 
-            <i class="fas fa-cog"></i>
-            Settings</h2>
+<h2 class="red-title section-title"> 
+    <i class="fas fa-cog"></i>
+    Settings
+</h2>
 
-    <div class="settings-grid">
+<div class="settings-grid">
 
-        <div class="setting-card">
+    <div class="setting-card">
 
-            <h4>Sensitivity</h4>
+        <h4>Sensitivity</h4>
 
-            <p>Multi-purpose settings for all modes</p>
+        <p>Multi-purpose settings for all modes</p>
 
-            <div class="code-box" id="sensCode">
-                7638166244813983865
-            </div>
-
-            <button class="copy-btn" onclick="copyCode('sensCode', this)">
-                Copy Code
-            </button>
-
+        <div class="code-box" id="sensCode">
+            7638166244813983865
         </div>
 
-        <div class="setting-card">
-
-            <h4>HUD Layout</h4>
-
-            <p>Optimized 4-finger claw setup (Ipad)</p>
-
-            <div class="code-box" id="hudCode">
-                7281661613032488096-7281662145608438344
-            </div>
-
-            <button class="copy-btn" onclick="copyCode('hudCode', this)">
-                Copy Code
-            </button>
-
-        </div>
+        <button class="copy-btn" onclick="copyCode('sensCode', this)">
+            Copy Code
+        </button>
 
     </div>
+
+    <div class="setting-card">
+
+        <h4>HUD Layout</h4>
+
+        <p>Optimized 4-finger claw setup (Ipad)</p>
+
+        <div class="code-box" id="hudCode">
+            7281661613032488096-7281662145608438344
+        </div>
+
+        <button class="copy-btn" onclick="copyCode('hudCode', this)">
+            Copy Code
+        </button>
+
+    </div>
+
+</div>
+
+<!-- NEW CARD -->
+<div class="bottom-card-wrapper">
+
+    <div class="setting-card bottom-card">
+
+        <h4>Graphics Settings</h4>
+
+        <p>This graphics to see more enemy.</p>
+
+        <div class="code-box" id="extraCode">
+            0_1_50_150_1000_1100_0_9_519_711_0_9_197_1163_0_9_-250_1115_0_9_9_689
+        </div>
+
+        <button class="copy-btn" onclick="copyCode('extraCode', this)">
+            Copy Code
+        </button>
+
+    </div>
+
+</div>
 
 <script>
 
