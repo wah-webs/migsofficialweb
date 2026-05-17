@@ -11,6 +11,94 @@
 
 <style>
 
+/* UID CARD */
+
+.uid-card{
+    width:100%;
+    max-width:620px;
+    margin:35px auto 0 auto;
+
+    background:linear-gradient(
+        180deg,
+        rgba(15,20,30,.92),
+        rgba(5,8,15,.96)
+    );
+
+    border:1px solid rgba(0,191,255,.12);
+    border-radius:24px;
+
+    padding:22px 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.08);
+
+    overflow:hidden;
+}
+
+.uid-info{
+    flex:1;
+    text-align:center;
+}
+
+.uid-label{
+    display:block;
+
+    color:#77dfff;
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+}
+
+.uid-card .uid-info h2{
+    font-size:22px !important;
+
+    font-weight:700;
+
+    color:white;
+
+    margin:0;
+
+    letter-spacing:1px;
+
+    word-break:break-all;
+}
+
+.uid-copy-btn{
+    min-width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
 /* ====================================
    ULTRA PREMIUM UNIQUE DESIGN
 ==================================== */
@@ -2079,6 +2167,31 @@ nav{
 
 </div>
 
+<!-- UID CARD START -->
+
+<div class="uid-card">
+
+    <div class="uid-info">
+
+        <span class="uid-label">
+            UID
+        </span>
+
+        <h2 id="uidText">
+    6743861630007771137
+</h2>
+
+    </div>
+
+    <button type="button" class="uid-copy-btn" id="copyBtn">
+    <i class="fas fa-copy"></i>
+</button>
+
+</div>
+
+<!-- UID CARD END -->
+
+
 <section class="section">
 
     <div class="section-title">
@@ -2155,10 +2268,10 @@ nav{
     'HS0405',
     'One-shot shotgun build for close combat dominance.',
     'HSO405-1F2A4A5E6B',
-    'hs attachment.PNG'
+    'images/hs attachment.PNG'
 )">
 
-    <img src="hs.PNG" class="weapon-img">
+    <img src="images/hs.PNG" class="weapon-img">
 
     <div class="weapon-content">
 
@@ -2206,7 +2319,7 @@ nav{
     'https://i.imgur.com/hgZKHiD.png'
 )">
 
-    <img src="argus.PNG" class="weapon-img">
+    <img src="images/argus.PNG" class="weapon-img">
 
     <div class="weapon-content">
 
@@ -2983,6 +3096,44 @@ nav{
 </div>
 
 <script>
+
+
+const copyBtn =
+document.getElementById("copyBtn");
+
+copyBtn.addEventListener("click", function(){
+
+    const uid =
+    document.getElementById("uidText").textContent;
+
+    navigator.clipboard.writeText(uid);
+
+    copyBtn.innerHTML =
+    '<i class="fas fa-check"></i>';
+
+    copyBtn.style.background =
+    'linear-gradient(135deg,#00ff99,#00cc66)';
+
+    copyBtn.style.transform =
+    'scale(1.12)';
+
+    setTimeout(() => {
+
+        copyBtn.innerHTML =
+        '<i class="fas fa-copy"></i>';
+
+        copyBtn.style.background =
+        'linear-gradient(135deg,#00bfff,#005eff)';
+
+        copyBtn.style.transform =
+        'scale(1)';
+
+    }, 1400);
+
+});
+
+</script>
+
 
 function toggleTheme(){
 
