@@ -11,92 +11,88 @@
 
 <style>
 
-/* UID CARD */
+/* =========================UID SECTION========================= */
 
-.uid-card{
-    width:100%;
-    max-width:620px;
-    margin:35px auto 0 auto;
 
-    background:linear-gradient(
-        180deg,
-        rgba(15,20,30,.92),
-        rgba(5,8,15,.96)
-    );
-
-    border:1px solid rgba(0,191,255,.12);
-    border-radius:24px;
-
-    padding:22px 24px;
-
+.uid-wrapper{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-    0 0 25px rgba(0,191,255,.08);
-
-    overflow:hidden;
+    justify-content:center;
+    margin-top:32px;
+    padding:0 20px;
 }
 
-.uid-info{
-    flex:1;
-    text-align:center;
+.uid-card{
+    width:620px;
+    background:linear-gradient(180deg, rgba(8,12,20,.95), rgba(5,8,15,.98));
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.05);
+    padding:26px 24px;
+    backdrop-filter:blur(18px);
+    box-shadow:0 0 30px rgba(0,191,255,.08);
 }
 
 .uid-label{
-    display:block;
-
-    color:#77dfff;
-
-    font-size:12px;
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    margin-bottom:10px;
+    text-align:center;
+    color:#dcecff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:6px;
+    margin-bottom:18px;
 }
 
-.uid-card .uid-info h2{
-    font-size:22px !important;
-
-    font-weight:700;
-
-    color:white;
-
-    margin:0;
-
-    letter-spacing:1px;
-
-    word-break:break-all;
-}
-
-.uid-copy-btn{
-    min-width:55px;
-    height:55px;
-
-    border:none;
-    border-radius:16px;
-
-    background:linear-gradient(
-        135deg,
-        #00bfff,
-        #005eff
-    );
-
-    color:white;
-
-    font-size:18px;
-
-    cursor:pointer;
-
+.uid-main{
     display:flex;
     align-items:center;
     justify-content:center;
+    gap:16px;
+}
+
+.uid-number{
+    width:460px;
+    height:74px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    border:1px solid rgba(255,255,255,.04);
+    color:#25d0ff;
+    font-size:20px;
+    font-weight:800;
+    text-align:center;
+}
+
+.uid-copy-btn{
+    width:74px;
+    height:74px;
+    border:none;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#00bfff,#0072ff);
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+    .uid-card{ width:100%; }
+
+    .uid-main{ flex-direction:column; }
+
+    .uid-number{
+        width:100%;
+        font-size:18px;
+        padding:0 12px;
+    }
+
+    .uid-copy-btn{
+        width:100%;
+        height:54px;
+        border-radius:14px;
+    }
 }
 
 /* ====================================
@@ -2076,6 +2072,42 @@ nav{
     width:620px; /* pwede mo baguhin */
 }
 
+
+/* LIGHT MODE UID */
+
+body.light-mode .uid-card{
+
+    background:white;
+
+    border:1px solid rgba(0,0,0,.08);
+
+    box-shadow:
+    0 0 30px rgba(0,191,255,.08);
+}
+
+body.light-mode .uid-number{
+
+    background:#f3f6fb;
+
+    border:1px solid rgba(0,0,0,.06);
+
+    color:#009dff;
+
+    box-shadow:
+    inset 0 0 20px rgba(0,191,255,.06);
+}
+
+body.light-mode .uid-label{
+
+    color:#555;
+}
+
+body.light-mode .uid-copy-btn{
+
+    box-shadow:
+    0 0 20px rgba(0,191,255,.18);
+}
+
 </style>
 </head>
 <body>
@@ -2167,30 +2199,31 @@ nav{
 
 </div>
 
-<!-- UID CARD START -->
+<!-- UID CARD -->
 
-<div class="uid-card">
+<div class="uid-wrapper">
 
-    <div class="uid-info">
+    <div class="uid-card">
 
-        <span class="uid-label">
+        <div class="uid-label">
             UID
-        </span>
+        </div>
 
-        <h2 id="uidText">
-    6743861630007771137
-</h2>
+        <div class="uid-main">
+
+            <div class="uid-number" id="uidText">
+                6743861630007771137
+            </div>
+
+            <button class="uid-copy-btn" onclick="copyUID(this)">
+                <i class="fa-regular fa-copy"></i>
+            </button>
+
+        </div>
 
     </div>
 
-    <button type="button" class="uid-copy-btn" id="copyBtn">
-    <i class="fas fa-copy"></i>
-</button>
-
 </div>
-
-<!-- UID CARD END -->
-
 
 <section class="section">
 
@@ -3097,44 +3130,6 @@ nav{
 
 <script>
 
-
-const copyBtn =
-document.getElementById("copyBtn");
-
-copyBtn.addEventListener("click", function(){
-
-    const uid =
-    document.getElementById("uidText").textContent;
-
-    navigator.clipboard.writeText(uid);
-
-    copyBtn.innerHTML =
-    '<i class="fas fa-check"></i>';
-
-    copyBtn.style.background =
-    'linear-gradient(135deg,#00ff99,#00cc66)';
-
-    copyBtn.style.transform =
-    'scale(1.12)';
-
-    setTimeout(() => {
-
-        copyBtn.innerHTML =
-        '<i class="fas fa-copy"></i>';
-
-        copyBtn.style.background =
-        'linear-gradient(135deg,#00bfff,#005eff)';
-
-        copyBtn.style.transform =
-        'scale(1)';
-
-    }, 1400);
-
-});
-
-</script>
-
-
 function toggleTheme(){
 
     const body = document.body;
@@ -3352,6 +3347,30 @@ function setActive(card){
     });
 
     card.classList.add('active');
+
+}
+
+function copyUID(btn){
+
+    const uid =
+    document.getElementById("uidText").innerText;
+
+    navigator.clipboard.writeText(uid);
+
+    btn.innerHTML =
+    '<i class="fa-solid fa-check"></i>';
+
+    btn.style.background =
+    "#16a34a";
+
+    setTimeout(() => {
+
+        btn.innerHTML =
+        '<i class="fa-regular fa-copy"></i>';
+
+        btn.style.background = "";
+
+    },1500);
 
 }
 
