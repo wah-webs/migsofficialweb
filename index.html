@@ -421,23 +421,6 @@ body{
     cursor:default;
 }
 
-/* GLASS EFFECT */
-
-.setting-card,
-.perk-box,
-.fov-card,
-.step-card{
-    background:
-    linear-gradient(
-        180deg,
-        rgba(20,25,35,.82),
-        rgba(10,15,20,.82)
-    );
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.05);
-}
 
 /* HOVER LIGHT */
 
@@ -767,7 +750,6 @@ nav{
 /* SETTINGS */
 
 .setting-card,
-.perk-box,
 .fov-card{
     background:rgba(10,15,25,.72);
     backdrop-filter:blur(18px);
@@ -906,7 +888,6 @@ body.light-mode .weapon-card,
 body.light-mode .stat-card,
 body.light-mode .setting-card,
 body.light-mode .step-card,
-body.light-mode .perk-box,
 body.light-mode .fov-card,
 body.light-mode .search{
     background:white;
@@ -1406,38 +1387,6 @@ nav{
     color:#00bfff;
 }
 
-/* PERKS */
-
-.perk-box{
-    background:linear-gradient(180deg,#1a0000,#0d0617);
-    border:1px solid rgba(0,191,255,.25);
-    border-radius:24px;
-    padding:30px;
-    max-width:700px;
-    margin:0 auto 80px;
-    box-shadow:0 0 35px rgba(0,191,255,.15);
-}
-
-.perk-box h3{
-    margin-bottom:25px;
-    color:#ff6b6b;
-}
-
-.perk-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-}
-
-.perk{
-    background:#07121f;
-    border:1px solid rgba(255,255,255,.06);
-    padding:16px;
-    border-radius:14px;
-    color:#ddd;
-    font-weight:600;
-}
-
 /* SETTINGS */
 
 .settings-grid{
@@ -1736,15 +1685,22 @@ nav{
 
 .qr-content{
     width:100%;
-    max-width:400px;
-    background:#0c0f13;
+    max-width:440px;
+    background:linear-gradient(
+        180deg,
+        #0d1220,
+        #070b14
+    );
+
     border:1px solid rgba(0,191,255,.25);
-    border-radius:28px;
-    padding:30px;
-    position:relative;
+    border-radius:30px;
+    padding:28px;
     text-align:center;
-    box-shadow:0 0 40px rgba(0,191,255,.2);
+    position:relative;
     animation:popup .25s ease;
+    box-shadow:
+        0 0 40px rgba(0,191,255,.15);
+
 }
 
 .qr-close{
@@ -1784,9 +1740,69 @@ nav{
     border:2px solid rgba(255,255,255,.08);
 }
 
+.qr-header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:800;
+    color:white;
+    margin-bottom:18px;
+}
+
+.qr-header i{
+    color:#00bfff;
+}
+
+.qr-subtitle{
+    color:#9db2c7;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.qr-card{
+    background:#005eff;
+    border-radius:18px;
+    padding:18px;
+    display:flex;
+    justify-content:center;
+
+    box-shadow:
+        0 0 25px rgba(0,94,255,.35);
+}
+
+.qr-card img{
+    width:100%;
+    max-width:270px;
+    border-radius:12px;
+    background:white;
+}
+
+.qr-footer{
+    margin-top:24px;
+    color:#9db2c7;
+    font-size:14px;
+}
+
+.qr-close{
+    position:absolute;
+    right:16px;
+    top:16px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#eadce1;
+    color:#3a2f35;
+    cursor:pointer;
+    font-size:18px;
+}
+
+
 /* MOBILE */
 
-@media (max-width: 900px){
+@media (max-width: 500px){
 
     nav{
         height:auto;
@@ -1928,10 +1944,6 @@ nav{
         font-size:18px;
     }
 
-    .perk-grid{
-        grid-template-columns:1fr;
-    }
-
     .settings-grid{
         grid-template-columns:1fr;
     }
@@ -1976,7 +1988,16 @@ nav{
     }
 
     .qr-content{
+        max-width:95%;
         padding:24px;
+    }
+
+    .qr-header{
+        font-size:18px;
+    }
+
+    .qr-card img{
+        max-width:220px;
     }
 
     .qr-image{
@@ -2108,6 +2129,421 @@ body.light-mode .uid-copy-btn{
     0 0 20px rgba(0,191,255,.18);
 }
 
+/* SEND GIFT */
+
+.gift-wrapper{
+    display:flex;
+    justify-content:center;
+    margin:35px 20px 50px;
+}
+
+.gift-card{
+    width:100%;
+    max-width:700px;
+
+    padding:35px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(10,15,25,.85),
+        rgba(5,8,15,.95)
+    );
+
+    border:1px solid rgba(0,191,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 0 35px rgba(0,191,255,.12);
+}
+
+.gift-title{
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:4px;
+    color:#dff7ff;
+    margin-bottom:24px;
+}
+
+.gift-heart{
+    width:72px;
+    height:72px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+    color:white;
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.35);
+}
+
+.gift-card h3{
+    margin-top:18px;
+    font-size:28px;
+    font-weight:800;
+}
+
+.gift-card p{
+    margin-top:10px;
+    color:#9cb4cf;
+}
+
+.gift-buttons{
+    margin-top:25px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+}
+
+.gift-btn{
+    height:82px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    transition:.3s;
+}
+
+.gift-btn i{
+    font-size:24px;
+}
+
+.gift-btn:hover{
+    transform:translateY(-6px);
+
+    border-color:#00bfff;
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.25);
+}
+
+.gift-paypal i{
+    color:#009cde;
+}
+
+.gift-gcash i{
+    color:#00bfff;
+}
+
+@media(max-width:700px){
+
+    .gift-buttons{
+        grid-template-columns:1fr;
+    }
+
+}
+
+.sensi-wrapper{
+    display:flex;
+    justify-content:center;
+    margin:50px 20px;
+}
+
+.sensi-card{
+    width:100%;
+    max-width:750px;
+    padding:35px;
+
+    border-radius:28px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(10,15,25,.9),
+        rgba(5,8,15,.96)
+    );
+
+    border:1px solid rgba(0,191,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 0 35px rgba(0,191,255,.12);
+
+    text-align:center;
+}
+
+.sensi-icon{
+    width:70px;
+    height:70px;
+    margin:auto;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+    color:white;
+}
+
+.sensi-card h2{
+    margin-top:18px;
+    margin-bottom:8px;
+}
+
+.sensi-card p{
+    color:#9cb4cf;
+    margin-bottom:25px;
+}
+
+.sensi-label{
+    text-align:left;
+    margin-bottom:10px;
+
+    font-size:12px;
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    color:#dff7ff;
+}
+
+.sensi-code{
+    background:#07121f;
+
+    border:1px dashed rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:20px;
+
+    color:#25d0ff;
+
+    font-weight:800;
+
+    word-break:break-all;
+}
+
+.sensi-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.sensi-btn{
+    height:58px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.sensi-copy{
+    background:linear-gradient(
+        135deg,
+        #00bfff,
+        #005eff
+    );
+
+    color:white;
+}
+
+.sensi-share{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.sensi-box{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
+    padding: 22px 18px;
+    text-align: center;
+    margin-bottom: 18px;
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.sensi-box:hover{
+    transform: translateY(-4px);
+    border-color: #00bfff; /* removed pink */
+    box-shadow:
+    0 0 25px rgba(0,191,255,.25); /* neutral glow */
+}
+
+.sensi-code{
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff; /* FIX: from pink → white */
+    cursor: pointer;
+}
+
+.sensi-copyhint{
+    margin-top: 8px;
+    font-size: 12px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+
+.section-title,
+.red-title{
+    font-size:54px !important;
+}
+
+/* =========================
+   FIX LIGHT MODE (FULL COVER)
+========================= */
+
+body.light-mode .sensi-card,
+body.light-mode .gift-card,
+body.light-mode .fov-card,
+body.light-mode .modal-box,
+body.light-mode .setting-card,
+body.light-mode .step-card{
+    background:#ffffff !important;
+    border:1px solid rgba(0,0,0,.08) !important;
+    color:#111 !important;
+    box-shadow:0 0 25px rgba(0,191,255,.08);
+}
+
+/* TEXT FIX */
+body.light-mode .sensi-card p,
+body.light-mode .gift-card p,
+body.light-mode .fov-card p,
+body.light-mode .step-card p{
+    color:#555 !important;
+}
+
+/* LABELS */
+body.light-mode .sensi-label{
+    color:#333 !important;
+}
+
+/* CODE BOX */
+body.light-mode .sensi-code{
+    background:#f3f6fb !important;
+    color:#009dff !important;
+    border:1px dashed rgba(0,0,0,.2) !important;
+}
+
+/* HERO TEXT FIX */
+body.light-mode .hero p{
+    color:#666 !important;
+}
+
+/* SECTION BACKGROUNDS */
+body.light-mode .stats,
+body.light-mode .categories,
+body.light-mode .search{
+    background:#ffffff !important;
+    border:1px solid rgba(0,0,0,.08) !important;
+}
+
+/* WEAPON CARD FIX */
+body.light-mode .weapon-card{
+    background:#ffffff !important;
+    color:#111 !important;
+    border:1px solid rgba(0,0,0,.08) !important;
+}
+
+body.light-mode .sensi-share{
+    background:#ffffff !important;
+    color:#111 !important;
+    border:1px solid rgba(0,0,0,.12) !important;
+}
+
+body.light-mode .sensi-share:hover{
+    background:#f3f6fb;
+    border-color:#00bfff;
+    transform:translateY(-4px);
+}
+
+body.light-mode .sensi-copy{
+    box-shadow:0 0 20px rgba(0,191,255,.15);
+}
+
+body.light-mode .sensi-box{
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,.08);
+}
+
+body.light-mode .sensi-code{
+    color: #111; /* FIX: readable black instead of pink */
+}
+
+body.light-mode .sensi-copyhint{
+    color: #666;
+}
+
+.qr-card img {
+    width: 100%;
+    max-width: 300px;
+    transition: 0.03s ease;
+    cursor: pointer;
+}
+
+/* desktop hover */
+.qr-card img:hover {
+    transform: scale(1.09);
+}
+
+/* CLICK / TAP ZOOM (works on phone) */
+.qr-card img.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.8);
+    z-index: 99999;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+}
+
 </style>
 </head>
 <body>
@@ -2140,10 +2576,6 @@ body.light-mode .uid-copy-btn{
         <a href="https://www.tiktok.com/@migsofficial_?is_from_webapp=1&sender_device=pc" class="social-btn tiktok" target="_blank">
             <i class="fab fa-tiktok"></i>
         </a>
-
-        <button class="social-btn gift" onclick="openQR()">
-            <i class="fas fa-gift"></i>
-        </button>
 
     </div>
 
@@ -2227,68 +2659,145 @@ body.light-mode .uid-copy-btn{
 
 </div>
 
-<h2 class="red-title section-title"> 
-    <i class="fas fa-cog"></i>
-    Settings
-</h2>
+<!-- SEND GIFT CARD -->
 
-<div class="settings-grid">
+<h2 class="section-title">
+            <i class="fas fa-gift"></i>
+            Send a Gift
+        </h2>
+        
+<div class="gift-wrapper">
 
-    <div class="setting-card">
+    <div class="gift-card">
 
-        <h4>Sensitivity</h4>
-
-        <p>Multi-purpose settings for all modes</p>
-
-        <div class="code-box" id="sensCode">
-            7638166244813983865
+        <div class="gift-heart">
+            <i class="fas fa-heart"></i>
         </div>
 
-        <button class="copy-btn" onclick="copyCode('sensCode', this)">
-            Copy Code
-        </button>
+        <h3>Support MIGS</h3>
 
-    </div>
+        <p>
+            Send a gift via PayPal or GCash
+        </p>
 
-    <div class="setting-card">
+        <div class="gift-buttons">
 
-        <h4>HUD Layout</h4>
+    <button class="gift-btn gift-paypal"
+            onclick="openPayPal()">
 
-        <p>Optimized 4-finger claw setup (Ipad)</p>
+        <i class="fab fa-paypal"></i>
+        PAYPAL
 
-        <div class="code-box" id="hudCode">
-            7281661613032488096-7281662145608438344
-        </div>
+    </button>
 
-        <button class="copy-btn" onclick="copyCode('hudCode', this)">
-            Copy Code
-        </button>
+    <button class="gift-btn gift-gcash"
+            onclick="openQR()">
+
+        <i class="fas fa-wallet"></i>
+        GCASH
+
+    </button>
+
+</div>
 
     </div>
 
 </div>
 
-<!-- NEW CARD -->
-<div class="bottom-card-wrapper">
+<!-- SENSITIVITY + HUD + GRAPHICS -->
 
-    <div class="setting-card bottom-card">
+<h2 class="section-title">
+            <i class="fas fa-crosshairs"></i>
+            Sensi &amp; HUD
+        </h2>
 
-        <h4>Graphics Settings</h4>
+<div class="sensi-wrapper">
 
-        <p>This graphics to see more enemy.</p>
+    <div class="sensi-card">
 
-        <div class="code-box" id="extraCode">
-            0_1_50_150_1000_1100_0_9_519_711_0_9_197_1163_0_9_-250_1115_0_9_9_689
+        <div class="sensi-icon">
+            <i class="fas fa-gamepad"></i>
         </div>
 
-        <button class="copy-btn" onclick="copyCode('extraCode', this)">
-            Copy Code
-        </button>
+        <h3>SENSITIVITY • HUD • GRAPHICS</h3>
+
+        <p>
+            Import codes for CODM
+        </p>
+
+        <div class="sensi-label">
+            SENSITIVITY
+        </div>
+
+        <div class="sensi-box">
+    <div class="sensi-code" id="combinedSens">
+        7638166244813983865
+    </div>
+    <div class="sensi-copyhint">Click to copy</div>
+</div>
+
+        <div class="sensi-label">
+            HUD LAYOUT
+        </div>
+
+        <div class="sensi-box">
+    <div class="sensi-code" id="combinedHud">
+        7281661613032488096-7281662145608438344
+    </div>
+    <div class="sensi-copyhint">Click to copy</div>
+</div>
+
+        <div class="sensi-label">
+            GRAPHICS SETTINGS
+        </div>
+
+        <div class="sensi-box">
+    <div class="sensi-code" id="combinedGraphics">
+        0_1_50_150_1000_1100_0_9_519_711_0_9_197_1163_0_9_-250_1115_0_9_9_689
+    </div>
+    <div class="sensi-copyhint">Click to copy</div>
+</div>
+
+        <div class="sensi-buttons">
+
+            <button
+                class="sensi-btn sensi-copy"
+                onclick="copyBothCodes(this)">
+                <i class="fas fa-copy"></i>
+                COPY ALL
+            </button>
+
+            <button
+                class="sensi-btn sensi-share"
+                onclick="shareCodes()">
+                <i class="fas fa-share-alt"></i>
+                SHARE
+            </button>
+
+        </div>
 
     </div>
 
 </div>
 
+
+<h2 class="red-title" style="margin-top:90px;">
+        👁 Field Of View
+    </h2>
+
+    <div class="fov-grid">
+
+        <div class="fov-card" onclick="setActive(this)">
+            <h2>90</h2>
+            <p>Balanced visibility and accuracy</p>
+        </div>
+
+        <div class="fov-card active" onclick="setActive(this)">
+            <h2>100</h2>
+            <p>Competitive recommended FOV</p>
+        </div>
+
+    </div>
 
 <section class="section">
 
@@ -3133,28 +3642,6 @@ body.light-mode .uid-copy-btn{
 
 </section>
 
-<div class="footer-line"></div>
-
-<section class="red-section">
-
-    <h2 class="red-title">
-        <i class="fas fa-bolt"></i>
-        Perks</h2>
-
-    <div class="perk-box">
-
-        <h3>Red Wildcard</h3>
-
-        <div class="perk-grid">
-            <div class="perk">Lightweight</div>
-            <div class="perk">Gung-Ho</div>
-            <div class="perk">Dead Silence</div>
-            <div class="perk">Restock</div>
-        </div>
-
-    </div>
-
-
 <script>
 
 function toggleTheme(){
@@ -3352,15 +3839,19 @@ function applyFilters(){
 /* QR MODAL */
 
 function openQR(){
-
     document.getElementById("qrModal").style.display = "flex";
-
 }
 
 function closeQR(){
-
     document.getElementById("qrModal").style.display = "none";
+}
 
+function openPayPal(){
+    document.getElementById("paypalModal").style.display = "flex";
+}
+
+function closePayPal(){
+    document.getElementById("paypalModal").style.display = "none";
 }
 
 /* FOV ACTIVE ANIMATION */
@@ -3401,75 +3892,72 @@ function copyUID(btn){
 
 }
 
+function copyBothCodes(btn){
+
+    const sensEl = document.getElementById("combinedSens");
+    const hudEl = document.getElementById("combinedHud");
+    const gfxEl = document.getElementById("combinedGraphics");
+
+    const sens = sensEl ? sensEl.innerText.trim() : "N/A";
+    const hud = hudEl ? hudEl.innerText.trim() : "N/A";
+    const graphics = gfxEl ? gfxEl.innerText.trim() : "N/A";
+
+    const text = 
+`SENSITIVITY:
+${sens}
+
+HUD:
+${hud}
+
+GRAPHICS:
+${graphics}`;
+
+    navigator.clipboard.writeText(text).then(() => {
+
+        const original = btn.innerHTML;
+        btn.innerHTML = "✅ COPIED ALL";
+        btn.style.background = "#16a34a";
+
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.style.background = "";
+        }, 1500);
+
+    });
+}
+
+document.querySelectorAll('.sensi-box').forEach(box=>{
+    box.addEventListener('click', ()=>{
+        const code = box.querySelector('.sensi-code').innerText;
+        const hint = box.querySelector('.sensi-copyhint');
+
+        navigator.clipboard.writeText(code);
+
+        hint.innerText = "Copied!";
+        hint.style.color = "#16a34a";
+
+        setTimeout(()=>{
+            hint.innerText = "Click to copy";
+            hint.style.color = "";
+        }, 1200);
+    });
+});
+
+document.querySelectorAll(".qr-card img").forEach(img => {
+    img.addEventListener("click", function (e) {
+        e.stopPropagation(); // para hindi magsara yung modal
+
+        this.classList.toggle("zoomed");
+    });
+});
+
+document.addEventListener("click", function () {
+    document.querySelectorAll(".qr-card img.zoomed").forEach(img => {
+        img.classList.remove("zoomed");
+    });
+});
+
 </script>
-    <h2 class="red-title" style="margin-top:90px;">
-        👁 Field Of View
-    </h2>
-
-    <div class="fov-grid">
-
-        <div class="fov-card" onclick="setActive(this)">
-            <h2>90</h2>
-            <p>Balanced visibility and accuracy</p>
-        </div>
-
-        <div class="fov-card active" onclick="setActive(this)">
-            <h2>100</h2>
-            <p>Competitive recommended FOV</p>
-        </div>
-
-    </div>
-
-    <div class="fancy-title">
-
-    <span></span>
-
-    <h2 style="display:flex; align-items:center; gap:12px; font-size:42px;">
-        
-        <!-- SVG ICON -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-book-open w-7 h-7 text-purple-400" aria-hidden="true">
-
-            <path d="M12 7v14"></path>
-            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
-
-        </svg>
-
-        HOW TO USE
-    </h2>
-
-    <span></span>
-
-</div>
-
-    <div class="steps">
-
-        <div class="step-card">
-            <div class="step-number">1</div>
-            <h4>Copy Code</h4>
-            <p>Click copy button on any settings card.</p>
-        </div>
-
-        <div class="step-card">
-            <div class="step-number">2</div>
-            <h4>Open Game</h4>
-            <p>Launch CODM and open settings.</p>
-        </div>
-
-        <div class="step-card">
-            <div class="step-number">3</div>
-            <h4>Import</h4>
-            <p>Paste the code into the import section.</p>
-        </div>
-
-        <div class="step-card">
-            <div class="step-number">4</div>
-            <h4>Dominate</h4>
-            <p>Enjoy pro-level recoil control and movement.</p>
-        </div>
-
-    </div>
 
 </section>
 
@@ -3480,7 +3968,7 @@ function copyUID(btn){
     <div class="mini-logo">MIGS</div>
 
     <div class="mini-sub">
-        umuubos ng lima, minamahal yung isa
+        migs apat na letra mataas tumalon malalim bumaon
     </div>
 
     <div class="mini-copy">
@@ -3503,27 +3991,55 @@ function copyUID(btn){
             <i class="fas fa-times"></i>
         </button>
 
-        <div class="qr-title">
+        <div class="qr-header">
             <i class="fas fa-gift"></i>
-            Favorite direct ni Migs
+            <span>Support via GCash</span>
         </div>
 
-        <div class="qr-text">
+        <div class="qr-subtitle">
             Scan to send GCash gift
         </div>
 
-        <img 
-            src="https://i.imgur.com/4HiNIDY.jpeg"
-            class="qr-image"
-        >
+        <div class="qr-card">
+            <img src="https://i.imgur.com/4HiNIDY.jpeg">
+        </div>
 
-        <div class="qr-text small">
+        <div class="qr-footer">
             Thank you for your support!
         </div>
 
     </div>
-
 </div>
 
+<!-- PAYPAL -->
+
+<div class="qr-modal" id="paypalModal" onclick="closePayPal()">
+
+    <div class="qr-content" onclick="event.stopPropagation()">
+
+        <button class="qr-close" onclick="closePayPal()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="qr-header">
+            <i class="fas fa-gift"></i>
+            <span>Support via PayPal</span>
+        </div>
+
+        <div class="qr-subtitle">
+            Scan to support via PayPal
+        </div>
+
+        <div class="qr-card">
+            <img src="images/paypal qr.png"
+                 style="width:900%; padding:20px;">
+        </div>
+
+        <div class="qr-footer">
+            Thank you for your support!
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
