@@ -2263,9 +2263,7 @@ body.light-mode .uid-copy-btn{
     color:#009cde;
 }
 
-.gift-gcash i{
-    color:#00bfff;
-}
+
 
 @media(max-width:700px){
 
@@ -2565,7 +2563,7 @@ body.light-mode .sensi-copyhint{
 
     <div class="social-links">
 
-        <a href="https://discord.gg/JhQKeqD74K" class="social-btn discord" target="_blank">
+        <a href="https://discord.gg/rNzQaqnN3" class="social-btn discord" target="_blank">
             <i class="fab fa-discord"></i>
         </a>
 
@@ -2659,57 +2657,8 @@ body.light-mode .sensi-copyhint{
 
 </div>
 
-<!-- SEND GIFT CARD -->
-
-<h2 class="section-title">
-            <i class="fas fa-gift"></i>
-            Send a Gift
-        </h2>
-        
-<div class="gift-wrapper">
-
-    <div class="gift-card">
-
-        <div class="gift-heart">
-            <i class="fas fa-heart"></i>
-        </div>
-
-        <h3>Support MIGS</h3>
-
-        <p>
-            Send a gift via PayPal or GCash
-        </p>
-
-        <div class="gift-buttons">
-
-    <button class="gift-btn gift-paypal"
-            onclick="openPayPal()">
-
-        <i class="fab fa-paypal"></i>
-        PAYPAL
-
-    </button>
-
-    <button class="gift-btn gift-gcash"
-            onclick="openQR()">
-
-        <i class="fas fa-wallet"></i>
-        GCASH
-
-    </button>
-
-</div>
-
-    </div>
-
-</div>
 
 <!-- SENSITIVITY + HUD + GRAPHICS -->
-
-<h2 class="section-title">
-            <i class="fas fa-crosshairs"></i>
-            Sensi &amp; HUD
-        </h2>
 
 <div class="sensi-wrapper">
 
@@ -2779,25 +2728,6 @@ body.light-mode .sensi-copyhint{
     </div>
 
 </div>
-
-
-<h2 class="red-title" style="margin-top:90px;">
-        👁 Field Of View
-    </h2>
-
-    <div class="fov-grid">
-
-        <div class="fov-card" onclick="setActive(this)">
-            <h2>90</h2>
-            <p>Balanced visibility and accuracy</p>
-        </div>
-
-        <div class="fov-card active" onclick="setActive(this)">
-            <h2>100</h2>
-            <p>Competitive recommended FOV</p>
-        </div>
-
-    </div>
 
 <section class="section">
 
@@ -2875,10 +2805,10 @@ body.light-mode .sensi-copyhint{
     'HS0405',
     'One-shot shotgun build for close combat dominance.',
     'HSO405-1F2A4A5E6B',
-    'hs attachment.PNG'
+    'images/hs attachment.PNG'
 )">
 
-    <img src="hs.PNG" class="weapon-img">
+    <img src="images/hs.PNG" class="weapon-img">
 
     <div class="weapon-content">
 
@@ -2926,7 +2856,7 @@ body.light-mode .sensi-copyhint{
     'https://i.imgur.com/hgZKHiD.png'
 )">
 
-    <img src="argus.PNG" class="weapon-img">
+    <img src="images/argus.PNG" class="weapon-img">
 
     <div class="weapon-content">
 
@@ -2946,10 +2876,10 @@ body.light-mode .sensi-copyhint{
     'R9',
     'High-damage double-shot shotgun capable of eliminating enemies in an instant. Excels in close to medium-range fights with fast follow-up shots and aggressive rush gameplay.',
     'R9-0-1G2B6A8B9A',
-    'r9 attachment.PNG'
+    'images/r9 attachment.PNG'
 )">
 
-    <img src="r9.PNG" class="weapon-img">
+    <img src="images/r9.PNG" class="weapon-img">
 
     <div class="weapon-content">
 
@@ -3981,65 +3911,5 @@ document.addEventListener("click", function () {
     OPTIMIZED FOR COMPETITIVE PLAY
 </div>
 
-<!-- QR MODAL -->
-
-<div class="qr-modal" id="qrModal" onclick="closeQR()">
-
-    <div class="qr-content" onclick="event.stopPropagation()">
-
-        <button class="qr-close" onclick="closeQR()">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <div class="qr-header">
-            <i class="fas fa-gift"></i>
-            <span>Support via GCash</span>
-        </div>
-
-        <div class="qr-subtitle">
-            Scan to send GCash gift
-        </div>
-
-        <div class="qr-card">
-            <img src="https://i.imgur.com/4HiNIDY.jpeg">
-        </div>
-
-        <div class="qr-footer">
-            Thank you for your support!
-        </div>
-
-    </div>
-</div>
-
-<!-- PAYPAL -->
-
-<div class="qr-modal" id="paypalModal" onclick="closePayPal()">
-
-    <div class="qr-content" onclick="event.stopPropagation()">
-
-        <button class="qr-close" onclick="closePayPal()">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <div class="qr-header">
-            <i class="fas fa-gift"></i>
-            <span>Support via PayPal</span>
-        </div>
-
-        <div class="qr-subtitle">
-            Scan to support via PayPal
-        </div>
-
-        <div class="qr-card">
-            <img src="images/paypal qr.png"
-                 style="width:900%; padding:20px;">
-        </div>
-
-        <div class="qr-footer">
-            Thank you for your support!
-        </div>
-
-    </div>
-</div>
 </body>
 </html>
